@@ -17,6 +17,8 @@ import { LoginComponent } from './login/index';
 import { HomeComponent } from './home/index';
 import { ChannelListComponent } from './channel-list/channel-list.component';
 import { ChannelService } from './_services/channel.service';
+import { BitweetNewsfeedComponent } from './bitweet-newsfeed/bitweet-newsfeed.component';
+import { BitweetService } from './_services/bitweet.service';
 
 @NgModule({
     imports: [
@@ -29,13 +31,15 @@ import { ChannelService } from './_services/channel.service';
         AppComponent,
         LoginComponent,
         HomeComponent,
-        ChannelListComponent
+        ChannelListComponent,
+        BitweetNewsfeedComponent
     ],
     providers: [
         AuthGuard,
         AuthenticationService,
         UserService,
         ChannelService,
+        BitweetService,
 
         // providers used to create fake backend
         fakeBackendProvider,

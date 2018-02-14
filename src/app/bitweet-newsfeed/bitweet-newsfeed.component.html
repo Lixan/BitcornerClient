@@ -1,0 +1,7 @@
+<h2>Bitweets</h2>
+<button (click)="loadBitweets()">Load profile</button>
+<ul class="bitweets">
+  <li *ngFor="let bitweet of bitweets">
+    <span class="badge">{{bitweet.id}}</span> {{bitweet.message}}
+  </li>
+</ul>
