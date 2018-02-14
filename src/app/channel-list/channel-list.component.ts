@@ -13,9 +13,16 @@ export class ChannelListComponent {
   profile = {};
   channels: Channel[];
 
-  loadChannels() {
-    this.channelService.getChannels().subscribe(
+  loadAllChannels() {
+    this.channelService.getAllChannels().subscribe(
       data => { this.channels = data; },
       error => { console.log(error); });
   }
+
+  loadBitweets(channelId: number) {
+    this.channelService.getOneChannel(channelId).subscribe(
+      data => { this.channels = data; },
+      error => { console.log(error); });
+  }
+
 }
