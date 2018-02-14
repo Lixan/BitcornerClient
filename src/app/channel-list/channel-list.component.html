@@ -1,0 +1,7 @@
+<h2>Channels</h2>
+<button (click)="loadChannels()">Load profile</button>
+<ul class="channels">
+  <li *ngFor="let channel of channels">
+    <span class="badge">{{channel.id}}</span> {{channel.title}}
+  </li>
+</ul>
