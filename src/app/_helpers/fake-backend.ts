@@ -4,7 +4,7 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOptions) {
     // configure fake backend
     backend.connections.subscribe((connection: MockConnection) => {
-        let testUser = { username: 'test', password: 'test', firstName: 'Test', lastName: 'User' };
+        let testUser = { username: 'test', password: 'test', mail: 'test@test.com', nbFollowers: 5, nbFollowing: 2, bitweets : [] };
 
         // wrap in timeout to simulate server api call
         setTimeout(() => {
