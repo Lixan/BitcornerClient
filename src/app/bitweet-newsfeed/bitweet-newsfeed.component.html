@@ -5,3 +5,19 @@
     <span class="badge">{{bitweet.id}}</span> {{bitweet.message}}
   </li>
 </ul>
+<button (click)="loadBitweetsFromUser(644)">Load profile</button>
+<ul class="bitweets">
+  <li *ngFor="let bitweet of bitweets">
+    <span class="badge">{{bitweet.id}}</span> {{bitweet.message}}
+  </li>
+</ul>
+<button (click)="loadBitweetsFromChannel(467)">Load profile</button>
+<ul class="bitweets">
+  <li *ngFor="let bitweet of bitweets">
+    <span class="badge">{{bitweet.id}}</span> {{bitweet.message}}
+  </li>
+</ul>
+<button (click)="loadBitweet(649)">Load profile</button>
+<div *ngIf="bitweet">
+    <span class="badge">{{bitweet.id}}</span> {{bitweet.message}}
+</div>
