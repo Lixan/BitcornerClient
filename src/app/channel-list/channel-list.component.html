@@ -1,7 +1,10 @@
 <h2>Channels</h2>
-<button (click)="loadChannels()">Load profile</button>
 <ul class="channels">
-  <li *ngFor="let channel of channels">
+  <li *ngFor="let channel of channels"
+    [class.selected]="channel === selectedChannel"
+    (click)="onSelect(channel)">
     <span class="badge">{{channel.id}}</span> {{channel.title}}
   </li>
 </ul>
+
+<app-bitweet-newsfeed [bitweets]="selectedBitweets"></app-bitweet-newsfeed>
