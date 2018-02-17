@@ -9,15 +9,32 @@ import {Bitweet} from '../_models';
   styleUrls: ['./bitweet-newsfeed.component.css']
 })
 
-export class BitweetNewsfeedComponent {
-  constructor(private bitweetService: BitweetService) {}
-  profile = {};
-  bitweets: Bitweet[];
+export class BitweetNewsfeedComponent implements OnInit {
 
-  loadBitweets() {
+  private bitweets: Bitweet[];
+
+  public constructor(private bitweetService: BitweetService) {}
+
+  public ngOnInit() {
+    this.loadAllBitweets();
+  }
+
+  public loadAllBitweets() {
+    this.clearBitweets();
     this.bitweetService.getBitweets().subscribe(
       data => { this.bitweets = data; },
       error => { console.log(error); });
+  }
+
+  public loadBitweetsFromChannel(channelId: number) {
+    this.clearBitweets();
+    this.bitweetService.getBitweetsFromChannel(channelId).subscribe(
+      data => { this.bitweets = data; },
+      error => { console.log(error); });
+  }
+
+  private clearBitweets() {
+    this.bitweets = [];
   }
 
 }

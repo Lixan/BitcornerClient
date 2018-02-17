@@ -3,20 +3,25 @@ import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import {Channel} from '../_models';
 import {Observable} from 'rxjs/Observable';
-import {SERVICE_URL} from '../_config/index';
+import {ServiceHelper} from '../_helpers';
 
 @Injectable()
 export class ChannelService {
-  constructor (private http: HttpClient) {}
+  private serviceHelper: ServiceHelper;
 
-  getAllChannels(): Observable<Channel[]>  {
-    return this.http.get<Channel[]>(SERVICE_URL + '?action=getChannels');
+  public constructor (private http: HttpClient) {
+    this.serviceHelper = new ServiceHelper();
   }
 
-  getOneChannel(id: number): Observable<Channel[]>  {
-    const obj = { id : 390 };
-    const params = JSON.stringify(obj);
-    return this.http.get<Channel[]>(SERVICE_URL + '?action=getChannel&params=' + params);
+  public getAllChannels(): Observable<Channel[]>  {
+    const url = this.serviceHelper.createServiceUrl('getChannels');
+    return this.http.get<Channel[]>(url);
+  }
+
+  public getOneChannel(id: number): Observable<Channel[]> {
+    const params = new Map<string, string>([['id', id.toString()]]);
+    const url = this.serviceHelper.createServiceUrlWithParameters('getChannel', params);
+    return this.http.get<Channel[]>(url);
   }
 
 }

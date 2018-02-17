@@ -1,14 +1,7 @@
 <h2>Channels</h2>
-<button (click)="loadAllChannels()">Load all channels</button>
 <ul class="channels">
-  <li *ngFor="let channel of channels" (click)="loadBitweets(channel.id)">
+  <li *ngFor="let channel of channels">
     <span class="badge">{{channel.id}}</span> {{channel.title}}
-    <div>
-      <p> {{channel.bitweets.length}} messages : </p>
-      <li *ngFor="let bitweet of channel.bitweets">
-        <span class="badge">{{bitweet.id}}</span> {{bitweet.message}}
-      </li>
-    </div>
+    <button (click)="updateBitweets(channel.id)">Load</button>
   </li>
 </ul>
-<button (click)="loadOneChannel(390)">Load one channel</button>
