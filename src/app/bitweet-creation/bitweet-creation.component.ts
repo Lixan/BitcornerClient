@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Bitweet} from '../_models';
-import {ChannelService, UserService} from '../_services';
+import {BitweetService, ChannelService, UserService} from '../_services';
 
 @Component({
   selector: 'app-bitweet-creation',

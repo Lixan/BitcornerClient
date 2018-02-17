@@ -7,6 +7,7 @@ import { AuthenticationService } from './index';
 import {Bitweet, User} from '../_models/index';
 import {HttpClient} from '@angular/common/http';
 import {ServiceHelper} from '../_helpers';
+import {BitweetService} from './bitweet.service';
 
 @Injectable()
 export class UserService {
@@ -15,7 +16,7 @@ export class UserService {
   private serviceHelper: ServiceHelper;
 
   // ---------------------------------------------------------------------- CONSTRUCTOR
-  public constructor(private http: HttpClient) {
+  public constructor(private http: HttpClient, private bitweetService: BitweetService) {
     this.serviceHelper = new ServiceHelper();
   }
 
@@ -31,6 +32,9 @@ export class UserService {
       ['idUser', bitweet.idUser.toString()]
     ]);
     const url = this.serviceHelper.createServiceUrlWithMapParameter('createBitweet', params);
-    this.http.get(url).subscribe(data => alert('Message soumis'));
+    this.http.get(url).subscribe(data => {
+      alert('Message soumis');
+      this.bitweetService.getAllBitweetsFromChannel(bitweet.idChannel);
+    });
   }
 }
