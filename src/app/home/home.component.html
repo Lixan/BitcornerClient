@@ -1,14 +1,39 @@
-<div class="col-md-6 col-md-offset-3">
-    <h1>Home</h1>
-    <p>You're logged in with JWT!!</p>
-    <div>
-        Users from secure api end point:
+<!-- Top header -->
+<div id="home-content">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header navbar-left">
+        <a class="navbar-brand" href="#">Brand</a>
+      </div>
+      <div class="navbar-header navbar-right">
         <ul>
-            <li *ngFor="let user of users">{{user.username}} {{user.password}}</li>
+          <li>
+            <ul>
+              <li *ngFor="let user of users">{{user.username}} {{user.password}}</li>
+            </ul>
+          </li>
+          <li><button type="button" class="btn btn-default navbar-btn">Sign in</button></li>
+          <li><p><a [routerLink]="['/login']">Logout</a></p></li>
         </ul>
+      </div>
     </div>
-    <p><a [routerLink]="['/login']">Logout</a></p>
-    <br/><br/><br/>
+  </nav>
+  <div class="col-md-12">
+
+
+  </div>
+  <!-- Left : channels list -->
+  <div id="left-content" class="col-md-3">
     <app-channel-list></app-channel-list>
+  </div>
+
+  <!-- Center : bitweets list -->
+  <div id="center-content" class="col-md-6">
     <app-bitweet-newsfeed></app-bitweet-newsfeed>
+  </div>
+
+  <!-- Right : hot bitweets -->
+  <div id="right-content" class="col-md-3">
+    <p>WWWW</p><button>OOOOO</button><br/><br/><br/><br/><br/><br/>
+  </div>
 </div>

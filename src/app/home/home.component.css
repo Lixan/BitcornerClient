@@ -1,0 +1,33 @@
+#home-content{
+  /*margin-left: 15%;
+  margin-right: 15%;*/
+  background-color: blue;
+  margin: auto;
+}
+
+#left-content{
+  /*display: inline-block;*/
+  float: left;
+  background-color: lightblue;
+}
+
+#center-content{
+  /*display: inline-block;*/
+  background-color: lightgreen;
+}
+
+#right-content{
+  /*float: right;*/
+  display: inline-block;
+  background-color: lightcoral;
+}
+
+.navbar ul{
+  margin: 0vw;
+}
+
+.navbar li{
+  display: inline-block;
+  margin-right: 10px;
+}
+
