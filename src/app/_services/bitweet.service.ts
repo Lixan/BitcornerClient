@@ -13,18 +13,26 @@ export class BitweetService {
     this.serviceHelper = new ServiceHelper();
   }
 
-  public getBitweets(): Observable<Bitweet[]>  {
+  public getAllBitweets(): Observable<Bitweet[]>  {
     const url = this.serviceHelper.createServiceUrl('getBitweets');
     return this.http.get<Bitweet[]>(url);
   }
 
-  // getBitweet(id: number): Observable<Bitweet>  {
-  //  return this.http.get<Bitweet>(SERVICE_URL + '?action=getBitweets');
-  // }
+  public getOneBitweet(bitweetId: number): Observable<Bitweet>  {
+    const params = new Map<string, string>([['id', bitweetId.toString()]]);
+    const url = this.serviceHelper.createServiceUrlWithParameters('getBitweet', params);
+    return this.http.get<Bitweet>(url);
+  }
+
+  public getBitweetsFromUser(userId: number): Observable<Bitweet>  {
+    const params = new Map<string, string>([['id', userId.toString()]]);
+    const url = this.serviceHelper.createServiceUrlWithParameters('getBitweet', params);
+    return this.http.get<Bitweet>(url);
+  }
 
   public getBitweetsFromChannel(channelId: number) {
     const params = new Map<string, string>([['id', channelId.toString()]]);
-    const url = this.serviceHelper.createServiceUrlWithParameters('getBitweetsFromChannel', params);
+    const url = this.serviceHelper.createServiceUrlWithParameters('getBitweetsFromUser', params);
     return this.http.get<Bitweet[]>(url);
   }
 
