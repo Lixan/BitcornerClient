@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { BitweetService } from '../_services/index';
+
 import {Bitweet} from '../_models';
 
 @Component({
@@ -9,35 +11,24 @@ import {Bitweet} from '../_models';
 })
 
 export class BitweetNewsfeedComponent implements OnInit {
-  /*private bitweets: Bitweet[];
+  // ---------------------------------------------------------------------- ATTRIBUTES
+  public bitweets: Bitweet[];
 
+  // ---------------------------------------------------------------------- CONSTRUCTOR
   public constructor(private bitweetService: BitweetService) {}
 
+  // ---------------------------------------------------------------------- PUBLIC METHODS
   public ngOnInit() {
+    this.bitweetService.bitweetsObservable.subscribe(bitweets => { this.bitweets = bitweets; }); // Subscribe to data
     this.loadAllBitweets();
-  }*/
-  bitweets: Bitweet[];
+  }
 
-  constructor() {}
-
-  ngOnInit() {}
-
-  /*public loadAllBitweets() {
-    this.clearBitweets();
-    this.bitweetService.getBitweets().subscribe(
-      data => { this.bitweets = data; },
-      error => { console.log(error); });
+  public loadAllBitweets() {
+    this.bitweetService.getAllBitweets();
   }
 
   public loadBitweetsFromChannel(channelId: number) {
-    this.clearBitweets();
-    this.bitweetService.getBitweetsFromChannel(channelId).subscribe(
-      data => { this.bitweets = data; },
-      error => { console.log(error); });
+    this.bitweetService.getAllBitweetsFromChannel(channelId);
   }
-
-  private clearBitweets() {
-    this.bitweets = [];
-  }*/
 
 }

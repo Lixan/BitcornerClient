@@ -1,27 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
-import {Channel} from '../_models';
+import {Bitweet, Channel} from '../_models';
 import {Observable} from 'rxjs/Observable';
 import {ServiceHelper} from '../_helpers';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class ChannelService {
+  // ---------------------------------------------------------------------- ATTRIBUTES
   private serviceHelper: ServiceHelper;
 
+  private channelsSource = new BehaviorSubject<Channel[]>([]); // Used to store and notify data to the view component
+  public channelsObservable = this.channelsSource.asObservable(); // Read by the view component
+
+  // ---------------------------------------------------------------------- CONSTRUCTOR
   public constructor (private http: HttpClient) {
     this.serviceHelper = new ServiceHelper();
   }
 
-  public getAllChannels(): Observable<Channel[]>  {
+  // ---------------------------------------------------------------------- PUBLIC METHODS
+  public getAllChannels(): void  {
     const url = this.serviceHelper.createServiceUrl('getChannels');
-    return this.http.get<Channel[]>(url);
+    this.http.get<Channel[]>(url).subscribe(data => { this.channelsSource.next(data); });
   }
-
-  public getOneChannel(id: number): Observable<Channel[]> {
-    const params = new Map<string, string>([['id', id.toString()]]);
-    const url = this.serviceHelper.createServiceUrlWithParameters('getChannel', params);
-    return this.http.get<Channel[]>(url);
-  }
-
 }

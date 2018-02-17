@@ -1,60 +1,41 @@
-/*
+
 import {Component, OnInit} from '@angular/core';
 
-import { ChannelService } from '../_services/index';
+import {BitweetService, ChannelService} from '../_services/index';
 import {Channel} from '../_models';
 import {BitweetNewsfeedComponent} from '../bitweet-newsfeed/bitweet-newsfeed.component';
-*/
+/*
 import { Component, OnInit } from '@angular/core';
 
 import { ChannelService, BitweetService } from '../_services/index';
 import {Channel, Bitweet} from '../_models';
-
+*/
 
 @Component({
   selector: 'app-channel-list',
   templateUrl: './channel-list.component.html',
-  styleUrls: ['./channel-list.component.css'],
-  // providers: [BitweetNewsfeedComponent]
+  styleUrls: ['./channel-list.component.css']
 })
 export class ChannelListComponent implements OnInit {
+  // ---------------------------------------------------------------------- ATTRIBUTES
+  public channels: Channel[];
+  public selectedChannel: Channel;
 
-  private channels: Channel[];
-  private selectedChannel: Channel;
-  private selectedBitweets: Bitweet[];
-
+  // ---------------------------------------------------------------------- CONSTRUCTOR
   public constructor(private channelService: ChannelService, private bitweetService: BitweetService) {}
-  // public constructor(private channelService: ChannelService, private bitweetNewsFeed: BitweetNewsfeedComponent) {}
 
+  // ---------------------------------------------------------------------- PUBLIC METHODS
   public ngOnInit() {
+    this.channelService.channelsObservable.subscribe(channels => { this.channels = channels; }); // Subscribe to data
     this.loadAllChannels();
   }
 
-  public onSelect(channel: Channel): void {
+  public onSelectChannel(channel: Channel): void {
     this.selectedChannel = channel;
-    // this.loadBitweetsFromChannel(this.selectedChannel.id);
+    this.bitweetService.getAllBitweetsFromChannel(this.selectedChannel.id); // Load bitweets
   }
 
   public loadAllChannels() {
-    this.channelService.getAllChannels().subscribe(
-      data => { this.channels = data; },
-      error => { console.log(error); });
+    this.channelService.getAllChannels();
   }
-
-  public loadOneChannel(channelId: number) {
-    this.channelService.getOneChannel(channelId).subscribe(
-      data => { this.channels = data; },
-      error => { console.log(error); });
-  }
-
-  /*public updateBitweets(channelId: number) {
-    this.bitweetNewsFeed.loadBitweetsFromChannel(channelId);
-  }*/
-
-  public loadBitweetsFromChannel(channelId: number) {
-    this.bitweetService.getBitweetsFromChannel(channelId).subscribe(
-      data => { this.selectedBitweets = data; },
-      error => { console.log(error); });
-  }
-
 }

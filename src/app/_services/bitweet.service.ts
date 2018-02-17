@@ -4,36 +4,36 @@ import { Injectable } from '@angular/core';
 import {Bitweet} from '../_models';
 import {Observable} from 'rxjs/Observable';
 import {ServiceHelper} from '../_helpers';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class BitweetService {
+  // ---------------------------------------------------------------------- ATTRIBUTES
   private serviceHelper: ServiceHelper;
 
+  private bitweetsSource = new BehaviorSubject<Bitweet[]>([]); // Used to store and notify data to the view component
+  public bitweetsObservable = this.bitweetsSource.asObservable(); // Read by the view component
+
+  // ---------------------------------------------------------------------- CONSTRUCTOR
   public constructor (private http: HttpClient) {
     this.serviceHelper = new ServiceHelper();
   }
 
-  public getAllBitweets(): Observable<Bitweet[]>  {
+  // ---------------------------------------------------------------------- PUBLIC METHODS
+  public getAllBitweets(): void {
     const url = this.serviceHelper.createServiceUrl('getBitweets');
-    return this.http.get<Bitweet[]>(url);
+    this.http.get<Bitweet[]>(url).subscribe(data => { this.bitweetsSource.next(data); });
   }
 
-  public getOneBitweet(bitweetId: number): Observable<Bitweet>  {
-    const params = new Map<string, string>([['id', bitweetId.toString()]]);
-    const url = this.serviceHelper.createServiceUrlWithParameters('getBitweet', params);
-    return this.http.get<Bitweet>(url);
-  }
-
-  public getBitweetsFromUser(userId: number): Observable<Bitweet>  {
-    const params = new Map<string, string>([['id', userId.toString()]]);
-    const url = this.serviceHelper.createServiceUrlWithParameters('getBitweet', params);
-    return this.http.get<Bitweet>(url);
-  }
-
-  public getBitweetsFromChannel(channelId: number) {
-    const params = new Map<string, string>([['id', channelId.toString()]]);
+  public getAllBitweetsFromUser(userId: number): void  {
+    const params = new Map<string, string>([['idUser', userId.toString()]]);
     const url = this.serviceHelper.createServiceUrlWithParameters('getBitweetsFromUser', params);
-    return this.http.get<Bitweet[]>(url);
+    this.http.get<Bitweet[]>(url).subscribe(data => { this.bitweetsSource.next(data); });
   }
 
+  public getAllBitweetsFromChannel(channelId: number): void {
+    const params = new Map<string, string>([['idChannel', channelId.toString()]]);
+    const url = this.serviceHelper.createServiceUrlWithParameters('getBitweetsFromChannel', params);
+    this.http.get<Bitweet[]>(url).subscribe(data => { this.bitweetsSource.next(data); });
+  }
 }

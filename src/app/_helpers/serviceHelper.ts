@@ -10,7 +10,6 @@ export class ServiceHelper {
   public createServiceUrlWithParameters(action: String, parameters: Map<string, string>): string {
     let url = this.createServiceUrl(action);
     url += '&params=' + this.mapToJSON(parameters);
-    console.log(url);
     return url;
   }
 

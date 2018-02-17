@@ -1,0 +1,9 @@
+ul.channels li{
+  display: block;
+  background-color: grey;
+}
+
+ul.channels li:hover{
+  cursor: pointer;
+  background-color: lightgrey;
+}
