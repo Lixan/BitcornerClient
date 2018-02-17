@@ -2,41 +2,53 @@
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
+import {ServiceHelper} from '../_helpers';
+import {HttpClient} from '@angular/common/http';
+import {User} from '../_models';
+import {UserService} from './user.service';
 
 @Injectable()
 export class AuthenticationService {
-    public token: string;
+  // ---------------------------------------------------------------------- ATTRIBUTES
+  public token: string;
+  private serviceHelper: ServiceHelper;
+  // ---------------------------------------------------------------------- CONSTRUCTOR
+  public constructor(private http: HttpClient, private userService: UserService) {
+    this.serviceHelper = new ServiceHelper();
 
-    constructor(private http: Http) {
-        // set token if saved in local storage
-        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.token = currentUser && currentUser.token;
-    }
+    // set token if saved in local storage
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.token = currentUser && currentUser.token;
+  }
 
-    login(username: string, password: string): Observable<boolean> {
-        return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
-            .map((response: Response) => {
-                // login successful if there's a jwt token in the response
-                let token = response.json() && response.json().token;
-                if (token) {
-                    // set token property
-                    this.token = token;
+  // ---------------------------------------------------------------------- PUBLIC METHODS
+  public login(username: string, password: string): Observable<boolean> {
+    const params = new Map<string, string>([['username', username], ['password', password]]);
+    const url = this.serviceHelper.createServiceUrlWithMapParameter('connect', params);
+    return this.http.get<User>(url)
+      .map(user => {
+        // should login successful if there's a jwt token in the response
+        if (user) {
+          // set token property
+          this.token = 'fake-jwt-token';
 
-                    // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
+          // store username and jwt token in local storage to keep user logged in between page refreshes
+          this.userService.currentUser = user;
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          localStorage.setItem('currentUserToken', JSON.stringify(this.token));
 
-                    // return true to indicate successful login
-                    return true;
-                } else {
-                    // return false to indicate failed login
-                    return false;
-                }
-            });
-    }
+          // return true to indicate successful login
+          return true;
+        } else {
+            // return false to indicate failed login
+            return false;
+        }
+      });
+  }
 
-    logout(): void {
-        // clear token remove user from local storage to log user out
-        this.token = null;
-        localStorage.removeItem('currentUser');
-    }
+  public logout(): void {
+      // clear token remove user from local storage to log user out
+      this.token = null;
+      localStorage.removeItem('currentUser');
+  }
 }

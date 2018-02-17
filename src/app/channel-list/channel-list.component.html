@@ -1,9 +1,7 @@
 <h2>Channels</h2>
-<ul class="channels">
-  <li
-    *ngFor="let channel of channels"
-    [class.selected]="channel === selectedChannel"
-    (click)="onSelectChannel(channel)">
+<div class="channel"
+     *ngFor="let channel of channels"
+     [class.selected]="channel === selectedChannel"
+     (click)="onSelectChannel(channel)">
     <span class="badge">{{channel.id}}</span> {{channel.title}}
-  </li>
-</ul>
+</div>

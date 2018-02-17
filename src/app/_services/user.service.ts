@@ -1,25 +1,36 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 
 import { AuthenticationService } from './index';
-import { User } from '../_models/index';
+import {Bitweet, User} from '../_models/index';
+import {HttpClient} from '@angular/common/http';
+import {ServiceHelper} from '../_helpers';
 
 @Injectable()
 export class UserService {
-    constructor(
-        private http: Http,
-        private authenticationService: AuthenticationService) {
-    }
+  // ---------------------------------------------------------------------- ATTRIBUTES
+  public currentUser: User;
+  private serviceHelper: ServiceHelper;
 
-    getUsers(): Observable<User[]> {
-        // add authorization header with jwt token
-        const headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
-        const options = new RequestOptions({ headers: headers });
+  // ---------------------------------------------------------------------- CONSTRUCTOR
+  public constructor(private http: HttpClient) {
+    this.serviceHelper = new ServiceHelper();
+  }
 
-        // get users from api
-        return this.http.get('/api/users', options)
-            .map((response: Response) => response.json());
-    }
+  // ---------------------------------------------------------------------- PUBLIC METHODS
+
+  public createBitweet(bitweet: Bitweet): void {
+    const params = new Map<string, string>([
+      ['id', bitweet.id.toString()],
+      ['message', bitweet.message],
+      ['nbVotes', bitweet.nbVotes.toString()],
+      ['comments', 'NULL'],
+      ['idChannel', bitweet.idChannel.toString()],
+      ['idUser', bitweet.idUser.toString()]
+    ]);
+    const url = this.serviceHelper.createServiceUrlWithMapParameter('createBitweet', params);
+    this.http.get(url).subscribe(data => alert('Message soumis'));
+  }
 }

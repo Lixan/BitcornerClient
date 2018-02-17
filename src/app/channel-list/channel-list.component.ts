@@ -19,7 +19,6 @@ import {Channel, Bitweet} from '../_models';
 export class ChannelListComponent implements OnInit {
   // ---------------------------------------------------------------------- ATTRIBUTES
   public channels: Channel[];
-  public selectedChannel: Channel;
 
   // ---------------------------------------------------------------------- CONSTRUCTOR
   public constructor(private channelService: ChannelService, private bitweetService: BitweetService) {}
@@ -31,8 +30,9 @@ export class ChannelListComponent implements OnInit {
   }
 
   public onSelectChannel(channel: Channel): void {
-    this.selectedChannel = channel;
-    this.bitweetService.getAllBitweetsFromChannel(this.selectedChannel.id); // Load bitweets
+    this.channelService.selectedChannel = channel;
+    localStorage.setItem('selectedChannel', JSON.stringify(channel));
+    this.bitweetService.getAllBitweetsFromChannel(channel.id); // Load bitweets
   }
 
   public loadAllChannels() {

@@ -27,13 +27,13 @@ export class BitweetService {
 
   public getAllBitweetsFromUser(userId: number): void  {
     const params = new Map<string, string>([['idUser', userId.toString()]]);
-    const url = this.serviceHelper.createServiceUrlWithParameters('getBitweetsFromUser', params);
+    const url = this.serviceHelper.createServiceUrlWithMapParameter('getBitweetsFromUser', params);
     this.http.get<Bitweet[]>(url).subscribe(data => { this.bitweetsSource.next(data); });
   }
 
   public getAllBitweetsFromChannel(channelId: number): void {
     const params = new Map<string, string>([['idChannel', channelId.toString()]]);
-    const url = this.serviceHelper.createServiceUrlWithParameters('getBitweetsFromChannel', params);
+    const url = this.serviceHelper.createServiceUrlWithMapParameter('getBitweetsFromChannel', params);
     this.http.get<Bitweet[]>(url).subscribe(data => { this.bitweetsSource.next(data); });
   }
 }

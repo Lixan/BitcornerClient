@@ -4,7 +4,7 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOptions) {
     // configure fake backend
     backend.connections.subscribe((connection: MockConnection) => {
-        let testUser = { username: 'test', password: 'test', mail: 'test@test.com', nbFollowers: 5, nbFollowing: 2, bitweets : [] };
+        const testUser = { username: 'test', password: 'test', mail: 'test@test.com', nbFollowers: 5, nbFollowing: 2, bitweets : [] };
 
         // wrap in timeout to simulate server api call
         setTimeout(() => {
@@ -12,7 +12,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
             // fake authenticate api end point
             if (connection.request.url.endsWith('/api/authenticate') && connection.request.method === RequestMethod.Post) {
                 // get parameters from post request
-                let params = JSON.parse(connection.request.getBody());
+                const params = JSON.parse(connection.request.getBody());
 
                 // check user credentials and return fake jwt token if valid
                 if (params.username === testUser.username && params.password === testUser.password) {
@@ -30,7 +30,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
             if (connection.request.url.endsWith('/api/users') && connection.request.method === RequestMethod.Get) {
                 // check for fake auth token in header and return test users if valid, this security is implemented server side
                 // in a real application
-                if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                if (connection.request.headers.get('Authorization') === 'fake-jwt-token') {
                     connection.mockRespond(new Response(
                         new ResponseOptions({ status: 200, body: [testUser] })
                     ));

@@ -1,6 +1,9 @@
 <h2>Bitweets</h2>
-<ul class="bitweets">
-  <li *ngFor="let bitweet of bitweets">
-    <span class="badge">{{bitweet.id}}</span> {{bitweet.message}}
-  </li>
-</ul>
+<div id="bitweet-newsfeed">
+  <app-bitweet-creation></app-bitweet-creation>
+
+  <div class="bitweet" *ngFor="let bitweet of bitweets">
+    {{bitweet.message}}
+  </div>
+</div>
+

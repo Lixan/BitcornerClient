@@ -10,7 +10,7 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 export class ChannelService {
   // ---------------------------------------------------------------------- ATTRIBUTES
   private serviceHelper: ServiceHelper;
-
+  public selectedChannel: Channel;
   private channelsSource = new BehaviorSubject<Channel[]>([]); // Used to store and notify data to the view component
   public channelsObservable = this.channelsSource.asObservable(); // Read by the view component
 

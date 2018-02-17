@@ -7,13 +7,19 @@ export class ServiceHelper {
     return url;
   }
 
-  public createServiceUrlWithParameters(action: String, parameters: Map<string, string>): string {
+  public createServiceUrlWithJSONParameter(action: String, jsonParameter: string): string {
+    let url = this.createServiceUrl(action);
+    url += '&params=' + jsonParameter;
+    return url;
+  }
+
+  public createServiceUrlWithMapParameter(action: String, parameters: Map<string, string>): string {
     let url = this.createServiceUrl(action);
     url += '&params=' + this.mapToJSON(parameters);
     return url;
   }
 
-  private mapToJSON(map): string {
+  public mapToJSON(map): string {
     const ro = {};
     map.forEach((value: string, key: string) => {
       ro[key] = value;

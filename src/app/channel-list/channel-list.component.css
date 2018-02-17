@@ -1,9 +1,12 @@
-ul.channels li{
-  display: block;
-  background-color: grey;
+.channel{
+  background-color: white;
+  margin-top: 2%;
+  padding: 1%;
+  box-shadow: 0px 1px 1px grey;
+  border-radius: 3px;
 }
 
-ul.channels li:hover{
+.channel:hover{
   cursor: pointer;
   background-color: lightgrey;
 }

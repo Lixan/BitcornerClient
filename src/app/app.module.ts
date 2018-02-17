@@ -19,6 +19,7 @@ import { ChannelListComponent } from './channel-list/channel-list.component';
 import { ChannelService } from './_services/channel.service';
 import { BitweetNewsfeedComponent } from './bitweet-newsfeed/bitweet-newsfeed.component';
 import { BitweetService } from './_services/bitweet.service';
+import { BitweetCreationComponent } from './bitweet-creation/bitweet-creation.component';
 
 @NgModule({
     imports: [
@@ -32,7 +33,8 @@ import { BitweetService } from './_services/bitweet.service';
         LoginComponent,
         HomeComponent,
         ChannelListComponent,
-        BitweetNewsfeedComponent
+        BitweetNewsfeedComponent,
+      BitweetCreationComponent
     ],
     providers: [
         AuthGuard,

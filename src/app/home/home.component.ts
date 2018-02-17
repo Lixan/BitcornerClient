@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 
 import { User } from '../_models/index';
-import { UserService } from '../_services/index';
+import {AuthenticationService, UserService} from '../_services/index';
 
 @Component({
     moduleId: module.id,
@@ -10,16 +10,17 @@ import { UserService } from '../_services/index';
 })
 
 export class HomeComponent implements OnInit {
-    users: User[] = [];
+    // ---------------------------------------------------------------------- ATTRIBUTES
+    public currentUsername: string;
 
-    constructor(private userService: UserService) { }
+    // ---------------------------------------------------------------------- CONSTRUCTOR
+    public constructor(private userService: UserService) { }
 
-    ngOnInit() {
-        // get users from secure api end point
-        this.userService.getUsers()
-            .subscribe(users => {
-                this.users = users;
-            });
+    // ---------------------------------------------------------------------- PUBLIC METHODS
+    public ngOnInit() {
+      if (this.userService.currentUser) {
+        this.currentUsername = this.userService.currentUser.username;
+      }
     }
 
 }
