@@ -33,7 +33,6 @@ export class AuthenticationService {
           this.token = 'fake-jwt-token';
 
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          this.userService.currentUser = user;
           localStorage.setItem('currentUser', JSON.stringify(user));
           localStorage.setItem('currentUserToken', JSON.stringify(this.token));
 

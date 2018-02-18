@@ -12,7 +12,6 @@ import {BitweetService} from './bitweet.service';
 @Injectable()
 export class UserService {
   // ---------------------------------------------------------------------- ATTRIBUTES
-  public currentUser: User;
   private serviceHelper: ServiceHelper;
 
   // ---------------------------------------------------------------------- CONSTRUCTOR
@@ -22,19 +21,5 @@ export class UserService {
 
   // ---------------------------------------------------------------------- PUBLIC METHODS
 
-  public createBitweet(bitweet: Bitweet): void {
-    const params = new Map<string, string>([
-      ['id', bitweet.id.toString()],
-      ['message', bitweet.message],
-      ['nbVotes', bitweet.nbVotes.toString()],
-      ['comments', 'NULL'],
-      ['idChannel', bitweet.idChannel.toString()],
-      ['idUser', bitweet.idUser.toString()]
-    ]);
-    const url = this.serviceHelper.createServiceUrlWithMapParameter('createBitweet', params);
-    this.http.get(url).subscribe(data => {
-      alert('Message soumis');
-      this.bitweetService.getAllBitweetsFromChannel(bitweet.idChannel);
-    });
-  }
+
 }

@@ -1,0 +1,9 @@
+<div id="bitweet-comment-creation-container">
+  <form (ngSubmit)="onSubmit()">
+    <textarea name="message" class="form-control" required
+              placeholder="Share your comment ..."
+              [(ngModel)]="comment.message"
+              maxlength="200"></textarea>
+    <button type="submit" class="btn btn-default btn-primary" [disabled]="comment.message.length==0">Soumettre</button>
+  </form>
+</div>

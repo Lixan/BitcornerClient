@@ -36,4 +36,20 @@ export class BitweetService {
     const url = this.serviceHelper.createServiceUrlWithMapParameter('getBitweetsFromChannel', params);
     this.http.get<Bitweet[]>(url).subscribe(data => { this.bitweetsSource.next(data); });
   }
+
+  public createBitweet(bitweet: Bitweet): void {
+    const params = new Map<string, string>([
+      ['id', bitweet.id.toString()],
+      ['message', bitweet.message],
+      ['nbVotes', '0'],
+      ['comments', 'NULL'],
+      ['idChannel', bitweet.idChannel.toString()],
+      ['idUser', bitweet.idUser.toString()]
+    ]);
+    const url = this.serviceHelper.createServiceUrlWithMapParameter('createBitweet', params);
+    this.http.get(url).subscribe(data => {
+      alert('Message soumis');
+      this.getAllBitweetsFromChannel(bitweet.idChannel); // Update view
+    });
+  }
 }

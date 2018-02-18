@@ -20,33 +20,37 @@ import { ChannelService } from './_services/channel.service';
 import { BitweetNewsfeedComponent } from './bitweet-newsfeed/bitweet-newsfeed.component';
 import { BitweetService } from './_services/bitweet.service';
 import { BitweetCreationComponent } from './bitweet-creation/bitweet-creation.component';
+import { BitweetCommentCreationComponent } from './bitweet-comment-creation/bitweet-comment-creation.component';
+import {CommentService} from './_services/comment.service';
 
 @NgModule({
     imports: [
-        BrowserModule,
-        FormsModule,
-        HttpClientModule,
-        AppRoutingModule
+      BrowserModule,
+      FormsModule,
+      HttpClientModule,
+      AppRoutingModule
     ],
     declarations: [
-        AppComponent,
-        LoginComponent,
-        HomeComponent,
-        ChannelListComponent,
-        BitweetNewsfeedComponent,
-      BitweetCreationComponent
+      AppComponent,
+      LoginComponent,
+      HomeComponent,
+      ChannelListComponent,
+      BitweetNewsfeedComponent,
+      BitweetCreationComponent,
+      BitweetCommentCreationComponent
     ],
     providers: [
-        AuthGuard,
-        AuthenticationService,
-        UserService,
-        ChannelService,
-        BitweetService,
+      AuthGuard,
+      AuthenticationService,
+      UserService,
+      ChannelService,
+      BitweetService,
+      CommentService,
 
-        // providers used to create fake backend
-        fakeBackendProvider,
-        MockBackend,
-        BaseRequestOptions
+      // providers used to create fake backend
+      fakeBackendProvider,
+      MockBackend,
+      BaseRequestOptions
     ],
     bootstrap: [AppComponent]
 })

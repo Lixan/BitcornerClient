@@ -4,6 +4,12 @@
 
   <div class="bitweet" *ngFor="let bitweet of bitweets">
     {{bitweet.message}}
+
+    <app-bitweet-comment-creation [bitweetId]="bitweet.id"></app-bitweet-comment-creation>
+    
+    <div class="comment" *ngFor="let comment of bitweet.comments">
+      {{comment.message}}
+    </div>
   </div>
 </div>
 

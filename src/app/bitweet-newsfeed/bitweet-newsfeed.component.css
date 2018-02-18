@@ -14,3 +14,7 @@
 .bitweet:hover{
   background-color: #eee;
 }
+
+.comment{
+  background-color: yellow;
+}
