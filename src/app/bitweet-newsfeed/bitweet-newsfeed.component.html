@@ -3,7 +3,9 @@
   <app-bitweet-creation></app-bitweet-creation>
 
   <div class="bitweet" *ngFor="let bitweet of bitweets">
-    <strong>{{bitweet.username}}</strong>
+    <a routerLink="/user/{{bitweet.idUser}}">
+      <strong>{{bitweet.username}}</strong>
+    </a>
     {{bitweet.message}}
     <div>
       {{bitweet.nbVotes}}
