@@ -52,4 +52,16 @@ export class BitweetService {
       this.getAllBitweetsFromChannel(bitweet.idChannel); // Update view
     });
   }
+
+  public upVote(bitweetId: number): void {
+    const params = new Map<string, string>([['idBitweet', bitweetId.toString()]]);
+    const url = this.serviceHelper.createServiceUrlWithMapParameter('upVote', params);
+    this.http.get(url).subscribe(data => {});
+  }
+
+  public downVote(bitweetId: number): void {
+    const params = new Map<string, string>([['idBitweet', bitweetId.toString()]]);
+    const url = this.serviceHelper.createServiceUrlWithMapParameter('downVote', params);
+    this.http.get(url).subscribe(data => {});
+  }
 }

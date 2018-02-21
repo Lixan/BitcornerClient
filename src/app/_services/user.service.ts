@@ -12,6 +12,7 @@ import {BitweetService} from './bitweet.service';
 @Injectable()
 export class UserService {
   // ---------------------------------------------------------------------- ATTRIBUTES
+  public currentUser: User;
   private serviceHelper: ServiceHelper;
 
   // ---------------------------------------------------------------------- CONSTRUCTOR

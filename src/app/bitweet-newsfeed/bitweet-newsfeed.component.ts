@@ -31,4 +31,14 @@ export class BitweetNewsfeedComponent implements OnInit {
     this.bitweetService.getAllBitweetsFromChannel(channelId);
   }
 
+  public upVote(bitweet: Bitweet) {
+    this.bitweetService.upVote(bitweet.id);
+    bitweet.nbVotes += 1;
+  }
+
+  public downVote(bitweet: Bitweet) {
+    this.bitweetService.downVote(bitweet.id);
+    bitweet.nbVotes -= 1;
+  }
+
 }
