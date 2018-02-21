@@ -17,7 +17,7 @@ export class BitweetCreationComponent implements OnInit {
 
   // ---------------------------------------------------------------------- PUBLIC METHODS
   public ngOnInit() {
-    this.bitweet = new Bitweet(-1, '', 0, [], -1, -1);
+    this.bitweet = new Bitweet(-1, '', 0, [], -1, '', -1);
   }
 
   public onSubmit(): void {

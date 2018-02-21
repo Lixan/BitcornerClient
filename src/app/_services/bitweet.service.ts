@@ -44,7 +44,8 @@ export class BitweetService {
       ['nbVotes', '0'],
       ['comments', 'NULL'],
       ['idChannel', bitweet.idChannel.toString()],
-      ['idUser', bitweet.idUser.toString()]
+      ['idUser', bitweet.idUser.toString()],
+      ['username', bitweet.username]
     ]);
     const url = this.serviceHelper.createServiceUrlWithMapParameter('createBitweet', params);
     this.http.get(url).subscribe(data => {

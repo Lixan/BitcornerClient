@@ -3,6 +3,7 @@
   <app-bitweet-creation></app-bitweet-creation>
 
   <div class="bitweet" *ngFor="let bitweet of bitweets">
+    <strong>{{bitweet.username}}</strong>
     {{bitweet.message}}
     <div>
       {{bitweet.nbVotes}}
@@ -12,6 +13,7 @@
     <app-bitweet-comment-creation [bitweetId]="bitweet.id"></app-bitweet-comment-creation>
 
     <div class="comment" *ngFor="let comment of bitweet.comments">
+      <strong>{{comment.username}}</strong>
       {{comment.message}}
     </div>
   </div>
