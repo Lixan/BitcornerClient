@@ -1,21 +1,13 @@
-<div *ngIf="user">
-  <h2>{{ user.username | uppercase }}</h2>
+<!-- Left : channels list -->
+<div id="left-content" class="col-md-3">
+  <div *ngIf="user">
+    <h2>{{ user.username | uppercase }}</h2>
+  </div>
+</div>
 
-  <div class="bitweet" *ngFor="let bitweet of bitweets">
-    <a routerLink="/user/{{bitweet.idUser}}">
-      <strong>{{bitweet.username}}</strong>
-    </a>
-    {{bitweet.message}}
-    <div>
-      {{bitweet.nbVotes}}
-      <button (click)="upVote(bitweet)">UpVote</button>
-      <button (click)="downVote(bitweet)">DownVote</button>
-    </div>
-    <app-bitweet-comment-creation [bitweetId]="bitweet.id"></app-bitweet-comment-creation>
-
-    <div class="comment" *ngFor="let comment of bitweet.comments">
-      <strong>{{comment.username}}</strong>
-      {{comment.message}}
-    </div>
+<!-- Center : bitweets list -->
+<div id="center-content" class="col-md-6">
+  <div *ngIf="user">
+    <app-bitweet-list [bitweets]="bitweets"></app-bitweet-list>
   </div>
 </div>

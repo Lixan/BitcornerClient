@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { BitweetService, UserService } from '../_services/index';
@@ -12,7 +12,7 @@ import { User, Bitweet } from '../_models';
 export class UserDetailComponent implements OnInit {
 
   private user: User;
-  private bitweets: Bitweet[];
+  @Input() bitweets: Bitweet[];
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,

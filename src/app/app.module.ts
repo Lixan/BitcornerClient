@@ -23,6 +23,7 @@ import { BitweetCreationComponent } from './bitweet-creation/bitweet-creation.co
 import { BitweetCommentCreationComponent } from './bitweet-comment-creation/bitweet-comment-creation.component';
 import {CommentService} from './_services/comment.service';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { BitweetListComponent } from './bitweet-list/bitweet-list.component';
 
 @NgModule({
     imports: [
@@ -39,7 +40,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
       BitweetNewsfeedComponent,
       BitweetCreationComponent,
       BitweetCommentCreationComponent,
-      UserDetailComponent
+      UserDetailComponent,
+      BitweetListComponent
     ],
     providers: [
       AuthGuard,
