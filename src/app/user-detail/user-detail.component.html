@@ -1,4 +1,21 @@
 <div *ngIf="user">
-  <h2>{{ user.username | uppercase }} Details</h2>
-  <div><span>id: </span>{{user.id}}</div>
+  <h2>{{ user.username | uppercase }}</h2>
+
+  <div class="bitweet" *ngFor="let bitweet of bitweets">
+    <a routerLink="/user/{{bitweet.idUser}}">
+      <strong>{{bitweet.username}}</strong>
+    </a>
+    {{bitweet.message}}
+    <div>
+      {{bitweet.nbVotes}}
+      <button (click)="upVote(bitweet)">UpVote</button>
+      <button (click)="downVote(bitweet)">DownVote</button>
+    </div>
+    <app-bitweet-comment-creation [bitweetId]="bitweet.id"></app-bitweet-comment-creation>
+
+    <div class="comment" *ngFor="let comment of bitweet.comments">
+      <strong>{{comment.username}}</strong>
+      {{comment.message}}
+    </div>
+  </div>
 </div>
