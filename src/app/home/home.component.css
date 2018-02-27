@@ -6,9 +6,10 @@
 }
 
 #left-content{
-  /*display: inline-block;
-  background-color: lightblue;*/
+  /*display: inline-block;*/
+  background-color: #E0E0E0;
   float: left;
+  margin-bottom: 20px;
 }
 
 #center-content{
@@ -30,4 +31,3 @@
   display: inline-block;
   margin-right: 10px;
 }
-

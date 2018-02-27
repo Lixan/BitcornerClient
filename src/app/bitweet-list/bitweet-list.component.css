@@ -8,13 +8,25 @@
   margin-top: 2%;
   padding: 1%;
   box-shadow: 0px 1px 1px grey;
-  border-radius: 3px;
+}
+
+.bitweet a{
+  color: #000000;
 }
 
 .bitweet:hover{
+  box-shadow: 0px 3px 1px grey;
+}
+
+.comments{
   background-color: #eee;
 }
 
-.comment{
-  background-color: yellow;
+.commentMessage{
+  background-color: #FFD180;
+  border-radius: 10px;
+  margin-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: inline-block;
 }

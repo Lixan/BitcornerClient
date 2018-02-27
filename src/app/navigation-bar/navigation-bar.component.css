@@ -1,32 +1,23 @@
-#home-content{
-  /*margin-left: 15%;
-  margin-right: 15%;
-  background-color: blue;*/
-  margin: auto;
+/* navbar */
+.navbar-default {
+    background-color: #FF6D00;
 }
 
-#left-content{
-  /*display: inline-block;
-  background-color: lightblue;*/
-  float: left;
+/* Title */
+.navbar-default .navbar-brand {
+    color: #FFFFFF;
 }
-
-#center-content{
-  /*display: inline-block;
-  background-color: lightgreen;*/
-}
-
-#right-content{
-  /*float: right;
-  background-color: lightcoral;*/
-  display: inline-block;
-}
-
-.navbar ul{
-  margin: 0vw;
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #F5F5F5;
 }
 
 .navbar li{
   display: inline-block;
-  margin-right: 10px;
+  margin-top: 15px;
+  margin-right: 5px;
+}
+
+.navbar a{
+  color: #FFFFFF;
 }
