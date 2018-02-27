@@ -1,13 +1,16 @@
-<!-- Left : channels list -->
-<div id="left-content" class="col-md-3">
-  <div *ngIf="user">
-    <h2>{{ user.username | uppercase }}</h2>
+<div>
+  <app-navigation-bar></app-navigation-bar>
+  <!-- Left : channels list -->
+  <div id="left-content" class="col-md-3">
+    <div *ngIf="user">
+      <h2>{{ user.username | uppercase }}</h2>
+    </div>
   </div>
-</div>
 
-<!-- Center : bitweets list -->
-<div id="center-content" class="col-md-6">
-  <div *ngIf="user">
-    <app-bitweet-list [bitweets]="bitweets"></app-bitweet-list>
+  <!-- Center : bitweets list -->
+  <div id="center-content" class="col-md-6">
+    <div *ngIf="user">
+      <app-bitweet-list [bitweets]="bitweets"></app-bitweet-list>
+    </div>
   </div>
 </div>

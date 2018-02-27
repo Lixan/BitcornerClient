@@ -24,6 +24,7 @@ import { BitweetCommentCreationComponent } from './bitweet-comment-creation/bitw
 import {CommentService} from './_services/comment.service';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { BitweetListComponent } from './bitweet-list/bitweet-list.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import { BitweetListComponent } from './bitweet-list/bitweet-list.component';
       BitweetCreationComponent,
       BitweetCommentCreationComponent,
       UserDetailComponent,
-      BitweetListComponent
+      BitweetListComponent,
+      NavigationBarComponent
     ],
     providers: [
       AuthGuard,

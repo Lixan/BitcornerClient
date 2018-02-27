@@ -18,8 +18,8 @@ export class HomeComponent implements OnInit {
 
     // ---------------------------------------------------------------------- PUBLIC METHODS
     public ngOnInit() {
-      if (this.userService.currentUser) {
-        this.currentUsername = this.userService.currentUser.username;
+      if(localStorage.getItem('currentUser')) {
+        this.currentUsername = JSON.parse(localStorage.getItem('currentUser'));
       }
     }
 
