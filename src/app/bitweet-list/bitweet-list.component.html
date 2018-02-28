@@ -6,17 +6,19 @@
   <br/>
   {{bitweet.message}}
   <br/>
-  <br/>
+  <hr/>
   <div>
-    {{bitweet.nbVotes}}
-    <button (click)="upVote(bitweet)">UpVote</button>
-    <button (click)="downVote(bitweet)">DownVote</button>
+    <em>{{bitweet.nbVotes}}</em>
+    <button id="upvote" (click)="upVote(bitweet)">Upvote</button>
+    <button id="downvote" (click)="downVote(bitweet)">Downvote</button>
   </div>
   <div class="comments">
     <app-bitweet-comment-creation [bitweetId]="bitweet.id"></app-bitweet-comment-creation>
 
     <div class="comment" *ngFor="let comment of bitweet.comments">
-      <strong>{{comment.username}}</strong>
+      <a routerLink="/user/{{bitweet.idUser}}">
+        <strong>{{comment.username}}</strong>
+      </a>
       <div class="commentMessage">
         {{comment.message}}
       </div>

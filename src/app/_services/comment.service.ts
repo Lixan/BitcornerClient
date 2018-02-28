@@ -27,11 +27,10 @@ export class CommentService {
     ]);
     const url = this.serviceHelper.createServiceUrlWithMapParameter('createComment', params);
     this.http.get(url).subscribe(data => {
-      alert('Commentaire soumis');
-
       const channelJSON = localStorage.getItem('selectedChannel');
       if (channelJSON) {
         const channel = JSON.parse(channelJSON);
+        console.log(channel);
         this.bitweetService.getAllBitweetsFromChannel(channel.id); // Update view
       }
 

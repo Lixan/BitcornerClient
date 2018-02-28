@@ -49,7 +49,6 @@ export class BitweetService {
     ]);
     const url = this.serviceHelper.createServiceUrlWithMapParameter('createBitweet', params);
     this.http.get(url).subscribe(data => {
-      alert('Message soumis');
       this.getAllBitweetsFromChannel(bitweet.idChannel); // Update view
     });
   }
