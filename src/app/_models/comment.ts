@@ -4,13 +4,15 @@ export class Comment {
     private _nbVotes: number;
     private _bitweetId: number;
     private _userId: number;
+    private _username: string;
 
-    constructor(id, message, nbVotes, bitweetId, userId) {
+    constructor(id, message, nbVotes, bitweetId, userId, username) {
       this._id = id;
       this._message = message;
       this._nbVotes = nbVotes;
       this._bitweetId = bitweetId;
       this._userId = userId;
+      this._username = username;
     }
 
     get id(): number {
@@ -46,6 +48,13 @@ export class Comment {
     }
     set userId(newUserId: number) {
       this._userId = newUserId;
+    }
+
+    get username(): string {
+      return this._username;
+    }
+    set username(newUsername: string) {
+      this._username = newUsername;
     }
 
 }

@@ -38,18 +38,30 @@ export class BitweetService {
   }
 
   public createBitweet(bitweet: Bitweet): void {
-    const params = new Map<string, string>([
+    const params = new Map<string, any>([
       ['id', bitweet.id.toString()],
       ['message', bitweet.message],
-      ['nbVotes', '0'],
+      ['nbVotes', 0],
       ['comments', 'NULL'],
       ['idChannel', bitweet.idChannel.toString()],
-      ['idUser', bitweet.idUser.toString()]
+      ['idUser', bitweet.idUser.toString()],
+      ['username', bitweet.username]
     ]);
     const url = this.serviceHelper.createServiceUrlWithMapParameter('createBitweet', params);
     this.http.get(url).subscribe(data => {
-      alert('Message soumis');
       this.getAllBitweetsFromChannel(bitweet.idChannel); // Update view
     });
+  }
+
+  public upVote(bitweetId: number): void {
+    const params = new Map<string, string>([['idBitweet', bitweetId.toString()]]);
+    const url = this.serviceHelper.createServiceUrlWithMapParameter('upVote', params);
+    this.http.get(url).subscribe(data => {});
+  }
+
+  public downVote(bitweetId: number): void {
+    const params = new Map<string, string>([['idBitweet', bitweetId.toString()]]);
+    const url = this.serviceHelper.createServiceUrlWithMapParameter('downVote', params);
+    this.http.get(url).subscribe(data => {});
   }
 }

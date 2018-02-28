@@ -1,0 +1,33 @@
+<div class="bitweet" *ngFor="let bitweet of bitweets">
+
+  <a routerLink="/user/{{bitweet.idUser}}">
+    <p>Posted by <span id="bitweet-username">{{bitweet.username}}</span> </p>
+  </a>
+  <br/>
+
+  <p id="bitweet-message">
+    &ldquo; {{bitweet.message}} &rdquo;
+  </p>
+
+  <div id="voteContainer">
+    <button id="upvote" class="voteButton" (click)="upVote(bitweet)">+</button><br/>
+    <em>{{bitweet.nbVotes}}</em><br/>
+    <button id="downvote" class="voteButton" (click)="downVote(bitweet)">-</button><br/>
+  </div>
+
+  <br/>
+  <hr/>
+
+  <div class="comments">
+    <app-bitweet-comment-creation [bitweetId]="bitweet.id"></app-bitweet-comment-creation>
+
+    <div class="comment" *ngFor="let comment of bitweet.comments">
+      <a routerLink="/user/{{bitweet.idUser}}">
+        <strong>{{comment.username}} : </strong>
+      </a>
+      <div class="commentMessage">
+        {{comment.message}}
+      </div>
+    </div>
+  </div>
+</div>

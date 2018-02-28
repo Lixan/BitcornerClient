@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div id="custom-navbar-left" class="navbar-header">
+      <a class="navbar-brand" href="#">Bitcorner</a>
+    </div>
+    <div id="custom-navbar-right" class="navbar-header">
+      <ul>
+        <li>
+          <a routerLink="/user/{{currentUser.id}}">
+          <strong>{{currentUser.username}}</strong>
+          </a>
+        </li>
+        <li><p><a [routerLink]="['/login']">Logout</a></p></li>
+      </ul>
+    </div>
+  </div>
+</nav>

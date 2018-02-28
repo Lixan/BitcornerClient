@@ -1,0 +1,84 @@
+#bitweet-list{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 2%;
+}
+
+#voteContainer{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.voteButton{
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+
+}
+#upvote{
+  background-color: lightgreen;
+}
+
+#upvote:hover{
+  background-color: green;
+}
+
+#downvote{
+  background-color: lightcoral;
+}
+
+#downvote:hover{
+  background-color: red;
+}
+
+.bitweet{
+  background-color: white;
+  margin-top: 5%;
+  padding: 1%;
+  box-shadow: 0px 1px 1px grey;
+  border: 1px solid orange;
+  position: relative;
+}
+
+.bitweet a{
+  color: #000000;
+}
+
+.bitweet:hover{
+  box-shadow: 0px 3px 1px grey;
+}
+
+.comments{
+
+}
+
+.commentMessage{
+  background-color: #FFD180;
+  border-radius: 10px;
+  margin-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: inline-block;
+}
+
+#bitweet-message{
+  font-family: Calibri, Verdana, Geneva, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: bold;
+  line-height: 26.4px;
+}
+
+#bitweet-username{
+  color: blue;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+#bitweet-username:hover{
+  color: blue;
+  font-style: normal;
+}

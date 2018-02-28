@@ -18,7 +18,7 @@ export class BitweetCommentCreationComponent implements OnInit {
 
   // ---------------------------------------------------------------------- PUBLIC METHODS
   public ngOnInit() {
-    this.comment = new Comment(-1, '', 0,  -1, -1);
+    this.comment = new Comment(-1, '', 0,  -1, -1, '');
   }
 
   public onSubmit(): void {

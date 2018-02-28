@@ -4,14 +4,16 @@ export class Bitweet {
     private _nbVotes: number;
     private _comments: Comment[];
     private _idUser: number;
+    private _username: string;
     private _idChannel: number;
 
-    constructor(id, message, nbVotes, comments, idUser, idChannel) {
+    constructor(id, message, nbVotes, comments, idUser, username, idChannel) {
       this._id = id;
       this._message = message;
       this._nbVotes = nbVotes;
       this._comments = comments;
       this._idUser = idUser;
+      this._username = username;
       this._idChannel = idChannel;
     }
 
@@ -48,6 +50,13 @@ export class Bitweet {
     }
     set idUser(newIdUser: number) {
       this._idUser = newIdUser;
+    }
+
+    get username(): string {
+      return this._username;
+    }
+    set username(newUsername: string) {
+      this._username = newUsername;
     }
 
     get idChannel(): number {

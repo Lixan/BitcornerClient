@@ -1,0 +1,47 @@
+.btn-primary{
+  background-color: #FF6D00;
+  border-color: #FF6D00;
+  border-radius: 0px;
+}
+
+.btn-primary:focus{
+  background-color: #FF6D00;
+  border-color: #FF6D00;
+  border-radius: 0px;
+}
+
+.btn-primary:hover{
+  background-color: #E65100;
+  border-color: #E65100;
+  border-radius: 0px;
+}
+
+.btn-primary:active{
+  background-color: #FF6D00;
+  border-color: #FF6D00;
+  border-radius: 0px;
+}
+
+.form-control{
+  background-color: #FFFFFF;
+  border-color: #E0E0E0;
+  box-shadow: 0px 3px 1px grey;
+  border-radius: 0px;
+  margin-bottom: 10px;
+}
+
+.form-control:focus{
+  background-color: #FFFFFF;
+  border-color: #E0E0E0;
+  box-shadow: 0px 3px 5px grey;
+  border-radius: 0px;
+  margin-bottom: 10px;
+}
+
+#bitweet-publish-button{
+  float: right;
+}
+
+#bitweet-creation-container{
+  margin-bottom: 80px;
+}

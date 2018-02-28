@@ -22,15 +22,15 @@ export class CommentService {
       ['message', comment.message],
       ['nbVotes', '0'],
       ['bitweetId', comment.bitweetId.toString()],
-      ['userId', comment.userId.toString()]
+      ['userId', comment.userId.toString()],
+      ['username', comment.username]
     ]);
     const url = this.serviceHelper.createServiceUrlWithMapParameter('createComment', params);
     this.http.get(url).subscribe(data => {
-      alert('Commentaire soumis');
-
       const channelJSON = localStorage.getItem('selectedChannel');
       if (channelJSON) {
         const channel = JSON.parse(channelJSON);
+        console.log(channel);
         this.bitweetService.getAllBitweetsFromChannel(channel.id); // Update view
       }
 

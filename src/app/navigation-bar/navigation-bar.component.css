@@ -1,0 +1,31 @@
+/* navbar */
+.navbar-default {
+    background-color: #FF6D00;
+}
+
+/* Title */
+.navbar-default .navbar-brand {
+    color: #FFFFFF;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #F5F5F5;
+}
+
+.navbar li{
+  display: inline-block;
+  margin-top: 15px;
+  margin-right: 5px;
+}
+
+.navbar a{
+  color: #FFFFFF;
+}
+
+#custom-navbar-left{
+  float: left;
+}
+#custom-navbar-right{
+  float: right;
+}
+

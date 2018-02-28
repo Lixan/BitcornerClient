@@ -1,15 +1,5 @@
-<h2>Bitweets</h2>
 <div id="bitweet-newsfeed">
+  <h2>Bitweets from {{selectedChannel.title}}</h2>
   <app-bitweet-creation></app-bitweet-creation>
-
-  <div class="bitweet" *ngFor="let bitweet of bitweets">
-    {{bitweet.message}}
-
-    <app-bitweet-comment-creation [bitweetId]="bitweet.id"></app-bitweet-comment-creation>
-
-    <div class="comment" *ngFor="let comment of bitweet.comments">
-      {{comment.message}}
-    </div>
-  </div>
+  <app-bitweet-list [bitweets]="bitweets"></app-bitweet-list>
 </div>
-
